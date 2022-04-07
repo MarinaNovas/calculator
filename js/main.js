@@ -126,6 +126,8 @@ class Calculator{
         return;
       }
 
+      if(btnText==='=') return;
+      
       let lastItem = this.do[this.do.length-1];
 
       if(!this.do.length || isNaN(parseFloat(lastItem))) return;
