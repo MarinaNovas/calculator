@@ -50,6 +50,18 @@ class Calculator{
       this.history.append(div);
   }
 
+  round(result){
+    let str = result.toString();
+
+    if(str.slice(str.indexOf('.')).length>=4){
+      result = result*10000;
+      result = Math.round(result);
+      result=result/10000;
+    }
+
+    return result;
+  }
+
   pressButton(btnText){                                  // Метод обрабатывающий нажатие кнопок калькулятора
 
     //если нажата кнопка с числом
@@ -102,6 +114,9 @@ class Calculator{
           result=this.math[operands[0]](result,parseFloat(operands[1]));
           operands.splice(0,2);
         }
+
+        result = this.round(result);
+
         this.do.push('=');
         this.do.push(`${result}`);
         this.done.push(this.do);
